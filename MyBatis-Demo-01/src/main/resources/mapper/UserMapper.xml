@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.mapper.UserMapper">
+    <select id="getUserList" resultType="com.feng.pojo.User">
+      select * from User
+  </select>
+
+    <select id="getUserListById" resultType="com.feng.pojo.User">
+      select * from User where id=#{id}
+  </select>
+
+  <select id="getUserListByMap" parameterType="map" resultType="com.feng.pojo.User">
+      select * from User where name=#{name} and pwd=#{pwd}
+  </select>
+
+  <select id="getUserListByNP" resultType="com.feng.pojo.User">
+      select * from User where name=#{name} and pwd=#{pwd}
+  </select>
+
+  <insert id="addUser" parameterType="com.feng.pojo.User" >
+    insert into user(id,name,pwd) values (#{id},#{name},#{pwd})
+  </insert>
+
+  <update id="updateUser" parameterType="com.feng.pojo.User" >
+   update user set name=#{name},pwd=#{pwd} where id=#{id}
+  </update>
+
+  <delete id="deleteUser" parameterType="int" >
+    delete from user where id=#{id}
+  </delete>
+</mapper>
